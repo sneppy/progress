@@ -31,7 +31,7 @@ class Bar(Progress):
     fill = '#'
     color = None
 
-    def update(self):
+    def update(self, label=''):
         filled_length = int(self.width * self.progress)
         empty_length = self.width - filled_length
 
@@ -40,7 +40,7 @@ class Bar(Progress):
         empty = self.empty_fill * empty_length
         suffix = self.suffix % self
         line = ''.join([message, self.bar_prefix, bar, empty, self.bar_suffix,
-                        suffix])
+                        suffix, label])
         self.writeln(line)
 
 
@@ -68,7 +68,7 @@ class IncrementalBar(Bar):
     else:
         phases = (' ', '▏', '▎', '▍', '▌', '▋', '▊', '▉', '█')
 
-    def update(self):
+    def update(self, label=''):
         nphases = len(self.phases)
         filled_len = self.width * self.progress
         nfull = int(filled_len)                      # Number of full chars
@@ -81,7 +81,7 @@ class IncrementalBar(Bar):
         empty = self.empty_fill * max(0, nempty - len(current))
         suffix = self.suffix % self
         line = ''.join([message, self.bar_prefix, bar, current, empty,
-                        self.bar_suffix, suffix])
+                        self.bar_suffix, suffix, label])
         self.writeln(line)
 
 

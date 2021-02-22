@@ -22,10 +22,10 @@ class Spinner(Infinite):
     phases = ('-', '\\', '|', '/')
     hide_cursor = True
 
-    def update(self):
+    def update(self, label=''):
         i = self.index % len(self.phases)
         message = self.message % self
-        line = ''.join([message, self.phases[i]])
+        line = ''.join([message, self.phases[i], label])
         self.writeln(line)
 
 

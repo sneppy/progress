@@ -2,3 +2,7 @@
 *.egg-info
 build/
 dist/
+
+# Python virtual environments
+venv/
+.venv/

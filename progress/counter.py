@@ -26,20 +26,20 @@ class Counter(Infinite):
 
 
 class Countdown(Progress):
-    def update(self):
+    def update(self, label=''):
         message = self.message % self
-        line = ''.join([message, str(self.remaining)])
+        line = ''.join([message, str(self.remaining), label])
         self.writeln(line)
 
 
 class Stack(Progress):
     phases = (' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█')
 
-    def update(self):
+    def update(self, label=''):
         nphases = len(self.phases)
         i = min(nphases - 1, int(self.progress * nphases))
         message = self.message % self
-        line = ''.join([message, self.phases[i]])
+        line = ''.join([message, self.phases[i], label])
         self.writeln(line)
 
 

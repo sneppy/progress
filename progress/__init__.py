@@ -84,7 +84,7 @@ class Infinite(object):
                 self.avg = sum(self._xput) / len(self._xput)
                 self._avg_update_ts = now
 
-    def update(self):
+    def update(self, label=''):
         pass
 
     def start(self):
@@ -115,13 +115,13 @@ class Infinite(object):
             msg = "%s has no attribute 'isatty'. Try setting check_tty=False." % self
             raise AttributeError(msg)
 
-    def next(self, n=1):
+    def next(self, n=1, label=''):
         now = monotonic()
         dt = now - self._ts
         self.update_avg(n, dt)
         self._ts = now
         self.index = self.index + n
-        self.update()
+        self.update(label)
 
     def iter(self, it):
         self.iter_value = None

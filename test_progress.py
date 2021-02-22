@@ -30,7 +30,7 @@ for bar_cls in (IncrementalBar, PixelBar, ShadyBar):
     suffix = '%(percent)d%% [%(elapsed_td)s / %(eta)d / %(eta_td)s]'
     with bar_cls(bar_cls.__name__, suffix=suffix, max=200) as bar:
         for i in range(200):
-            bar.next()
+            bar.next(label='Hello')
             sleep()
 
 bar = IncrementalBar(bold('Corolored'), color='green')
